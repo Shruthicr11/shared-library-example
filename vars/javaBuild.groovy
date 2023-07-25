@@ -104,7 +104,9 @@ stages {
          }
     }
 
-    def notifyBitbuckets(String state) {
+    
+}
+def notifyBitbuckets(String state) {
  
     if('SUCCESS' == state || 'FAILED' == state) {
     // Set result of currentBuild !Important!
@@ -115,5 +117,3 @@ stages {
     includeBuildNumberInKey: true, prependParentProjectKey: false, projectKey: '', stashServerBaseUrl: 'https://bitbucket.harman.com/'
  
 }
-}
- 
