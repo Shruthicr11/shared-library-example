@@ -1,4 +1,22 @@
 def call() {
+    pipeline {
+    agent {
+        kubernetes {
+            yaml '''
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: maven
+    image: shruthicr/jenkinsmavenagent:3
+    imagePullSecretName: shruthidocker
+    command:
+    - cat
+    tty: true
+'''
+    }
+}
+
 stages {
         stage('get_commit_msg') {
           steps {
@@ -55,5 +73,6 @@ stages {
             }
         }
     }
-    
+    }
 }
+ 
